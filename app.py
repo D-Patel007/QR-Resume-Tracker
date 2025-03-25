@@ -16,10 +16,7 @@ def home():
         ip = request.remote_addr
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        os.makedirs("logs", exist_ok=True)
-        with open(LOG_FILE, mode="a", newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow([timestamp, ip, name, company])
+        print(f"[{timestamp}] {ip} - {name} from {company}")
 
         return redirect(RESUME_PATH)
     return render_template("index.html")
